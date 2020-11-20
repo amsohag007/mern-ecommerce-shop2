@@ -1,0 +1,17 @@
+{
+  "name": "shop2",
+  "version": "1.0.0",
+  "description": "MERN eCommerce shop with multivendor",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "AbuMusa",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.15",
+    "nodemon": "^2.0.6"
+  }
+}
