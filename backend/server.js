@@ -8,6 +8,7 @@ import cookieParser from "cookie-parser";
 dotenv.config();
 
 //import routes
+import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 
 //app
@@ -25,6 +26,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 //routes middleware
+app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 
 //basic server running port setup

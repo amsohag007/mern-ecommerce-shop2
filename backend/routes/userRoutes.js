@@ -1,10 +1,19 @@
 import express from "express";
 const router = express.Router();
 
-import { signup, signin, signout } from "../controllers/userControllers.js";
+import { userById } from "../controllers/userControllers.js";
+import {
+  requireSignin,
+  isAuth,
+  isAdmin,
+} from "../controllers/authControllers.js";
 
-router.post("/signup", signup);
-router.post("/signin", signin);
-router.get("/signout", signout);
+router.get("/secret", isAuth, (req, res) => {
+  res.json({
+    user: "got here yay",
+  });
+});
+
+router.param("/userId", userById);
 
 export default router;
