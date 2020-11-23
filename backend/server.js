@@ -2,6 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import colors from "colors";
 import connectDB from "./config/db.js";
+import morgan from "morgan";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -14,10 +16,18 @@ const app = express();
 //db connection here
 connectDB();
 
-//routes middleware
-app.use(userRoutes);
+//middleware
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
-//
+app.use(express.json());
+app.use(cookieParser());
+
+//routes middleware
+app.use("/api", userRoutes);
+
+//basic server running port setup
 const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
