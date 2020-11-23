@@ -1,16 +1,19 @@
 import User from "../models/userModel.js";
+import errorHandler from "../errorHandler/dbErrorHandler.js";
 
 const signup = (req, res) => {
-  const user = new User(req.body);
+  const newUser = new User(req.body);
   console.log("req.boby", req.body);
-  user.save((err, user) => {
+  newUser.save((err, newUser) => {
     if (err) {
       return res.status(400).json({
-        err,
+        err: errorHandler(err),
       });
     }
+    newUser.salt = undefined;
+    newUser.hashed_password = undefined;
     res.json({
-      user,
+      newUser,
     });
   });
 };
