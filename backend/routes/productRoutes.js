@@ -7,6 +7,7 @@ import {
   readProduct,
   deleteProduct,
   updateProduct,
+  productList,
 } from "../controllers/productControllers.js";
 import {
   requireSignin,
@@ -37,6 +38,8 @@ router.put(
   isAdmin,
   updateProduct
 );
+
+router.get("/products", productList);
 
 router.param("userId", userById);
 router.param("productId", productById);
