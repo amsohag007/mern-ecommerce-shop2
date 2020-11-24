@@ -5,6 +5,23 @@ import _ from "lodash";
 import Product from "../models/productModel.js";
 import errorHandler from "../errorHandler/dbErrorHandler.js";
 
+//midddle ware that makes product data available on route param
+const productById = (req, res, next, id) => {
+  Product.findById(id)
+    .populate("category")
+    .exec((err, product) => {
+      if (err || !product) {
+        return res.status(400).json({
+          error: "Product not found",
+        });
+      }
+      req.product = product;
+      //console.log(product);
+      next();
+    });
+};
+
+//create new product and validate input
 const createProduct = (req, res) => {
   let form = new formidable.IncomingForm();
   form.keepExtensions = true;
@@ -58,4 +75,9 @@ const createProduct = (req, res) => {
   });
 };
 
-export { createProduct };
+const readProduct = (req, res) => {
+  req.product.photo = undefined;
+  return res.json(req.product);
+};
+
+export { createProduct, readProduct, productById };
