@@ -5,6 +5,8 @@ import {
   createProduct,
   productById,
   readProduct,
+  deleteProduct,
+  updateProduct,
 } from "../controllers/productControllers.js";
 import {
   requireSignin,
@@ -20,6 +22,20 @@ router.post(
   isAuth,
   isAdmin,
   createProduct
+);
+router.delete(
+  "/product/:productId/:userId",
+  requireSignin,
+  isAuth,
+  isAdmin,
+  deleteProduct
+);
+router.put(
+  "/product/:productId/:userId",
+  requireSignin,
+  isAuth,
+  isAdmin,
+  updateProduct
 );
 
 router.param("userId", userById);
