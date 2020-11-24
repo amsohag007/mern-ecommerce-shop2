@@ -104,6 +104,7 @@ const updateProduct = (req, res) => {
       });
     }
 
+    //req.product is load by productById middleware
     let product = req.product;
     product = _.extend(product, fields);
 
@@ -127,7 +128,7 @@ const updateProduct = (req, res) => {
           error: errorHandler(err),
         });
       }
-      res.json(result);
+      res.json({ message: "updated successfully", result });
     });
   });
 };
