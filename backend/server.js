@@ -10,6 +10,7 @@ dotenv.config();
 //import routes
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import categoryRoutes from "./routes/categoryRoutes.js";
 
 //app
 const app = express();
@@ -28,6 +29,7 @@ app.use(cookieParser());
 //routes middleware
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
+app.use("/api", categoryRoutes);
 
 //basic server running port setup
 const port = process.env.PORT || 8000;
