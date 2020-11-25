@@ -22,7 +22,7 @@ const Menu = ({ history }) => {
           <Link
             className="nav-link"
             style={isActive(history, "/signup")}
-            to="/singup"
+            to="/signup"
           >
             SignUp
           </Link>

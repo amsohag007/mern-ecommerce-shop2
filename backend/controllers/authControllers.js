@@ -5,21 +5,24 @@ import errorHandler from "../errorHandler/dbErrorHandler.js";
 import dotenv from "dotenv";
 dotenv.config();
 
-const signup = (req, res) => {
-  const newUser = new User(req.body); // User is from userModel
-  console.log("req.boby", req.body);
-  newUser.save((err, newUser) => {
-    if (err) {
-      return res.status(400).json({
-        err: errorHandler(err),
-      });
-    }
-    newUser.salt = undefined;
-    newUser.hashed_password = undefined;
-    res.json({
-      newUser,
+const signup = async (req, res) => {
+  try {
+    const newUser = await new User(req.body);
+    console.log("client send=>", req.body);
+
+    await newUser.save((err, newUser) => {
+      if (err) {
+        //return res.status(400).json({ err });
+        return res.status(400).json({
+          error: "Invalid form input",
+          // error: errorHandler(err),
+        });
+      }
+      res.status(200).json({ newUser });
     });
-  });
+  } catch (err) {
+    console.error(err.message);
+  }
 };
 
 const signin = (req, res) => {
