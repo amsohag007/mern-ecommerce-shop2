@@ -1,7 +1,11 @@
 import express from "express";
 const router = express.Router();
 
-import { userById } from "../controllers/userControllers.js";
+import {
+  userById,
+  readProfile,
+  updateProfile,
+} from "../controllers/userControllers.js";
 import {
   requireSignin,
   isAuth,
@@ -13,6 +17,9 @@ router.get("/secret", isAuth, (req, res) => {
     user: "got here yay",
   });
 });
+
+router.get("/user/:userId", requireSignin, isAuth, isAdmin, readProfile);
+router.put("/user/update/:userId", requireSignin, isAuth, updateProfile);
 
 router.param("/userId", userById);
 
