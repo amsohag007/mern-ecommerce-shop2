@@ -10,7 +10,7 @@ const isActive = (history, path) => {
   }
 };
 
-const Menu = ({ history }) => {
+const NavMenu = ({ history }) => {
   return (
     <div>
       <ul className="nav nav-tabs bg-primary">
@@ -88,4 +88,4 @@ const Menu = ({ history }) => {
   );
 };
 
-export default withRouter(Menu);
+export default withRouter(NavMenu);
