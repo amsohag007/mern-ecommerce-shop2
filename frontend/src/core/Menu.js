@@ -67,6 +67,19 @@ const Menu = ({ history }) => {
             </span>
           </li>
         )}
+        <li className="nav-item">
+          <span
+            className="nav-link"
+            style={{ cursor: "pointer", color: "#ffffff" }}
+            onClick={() =>
+              signout(() => {
+                history.push("/user/dashboard");
+              })
+            }
+          >
+            Dashboard
+          </span>
+        </li>
       </ul>
     </div>
   );
