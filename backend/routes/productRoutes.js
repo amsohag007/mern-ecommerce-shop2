@@ -11,6 +11,7 @@ import {
   productRelatedlist,
   productCategoryList,
   searchProducts,
+  searchByQuery,
   productPhoto,
 } from "../controllers/productControllers.js";
 import {
@@ -47,6 +48,7 @@ router.get("/products", productList);
 router.get("/products/related/:productId", productRelatedlist);
 router.get("/products/categories", productCategoryList);
 router.post("/products/search", searchProducts); //retun a list of products
+router.post("/products/searchbyquery", searchByQuery);
 router.get("/product/photo/:productId", productPhoto);
 
 router.param("userId", userById);
