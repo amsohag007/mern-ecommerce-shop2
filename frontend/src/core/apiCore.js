@@ -34,19 +34,21 @@ export const getFilteredProducts = (skip, limit, filters = {}) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
-  }).then((response) => {
-    return response.json();
-  });
-  // .catch((err) => {
-  //   return console.log(err);
-  // });
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => {
+      return console.log(err);
+    });
 };
 
+//search by query in navbar
 export const list = (params) => {
   const query = queryString.stringify(params);
   console.log("query", query);
-  return fetch(`${API}/products/search?${query}`, {
-    method: "GET",
+  return fetch(`${API}/products/navsearch?${query}`, {
+    method: "POST",
   })
     .then((response) => {
       return response.json();
