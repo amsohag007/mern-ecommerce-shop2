@@ -21,7 +21,7 @@ import {
 } from "../controllers/authControllers.js";
 import { userById } from "../controllers/userControllers.js";
 
-router.get("/product/:productId", readProduct);
+router.get("/productdetails/:productId", readProduct);
 router.post(
   "/product/create/:userId",
   requireSignin,

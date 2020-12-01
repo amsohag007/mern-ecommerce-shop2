@@ -56,8 +56,9 @@ export const list = (params) => {
     .catch((err) => console.log(err));
 };
 
-export const read = (productId) => {
-  return fetch(`${API}/product/${productId}`, {
+//single product details
+export const productDetails = (productId) => {
+  return fetch(`${API}/productdetails/${productId}`, {
     method: "GET",
   })
     .then((response) => {
