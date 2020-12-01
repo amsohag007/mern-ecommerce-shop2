@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
-import { productDetails, listRelated } from "./apiCore.js";
+import { productDetails, productRelated } from "./apiCore.js";
 import Card from "./Card";
 
 const ProductDetails = (props) => {
@@ -15,7 +15,7 @@ const ProductDetails = (props) => {
       } else {
         setProduct(data);
         // fetch related products
-        listRelated(data._id).then((data) => {
+        productRelated(data._id).then((data) => {
           if (data.error) {
             setError(data.error);
           } else {
@@ -25,7 +25,7 @@ const ProductDetails = (props) => {
       }
     });
   };
-
+  console.log("related product", relatedProduct);
   useEffect(() => {
     const productId = props.match.params.productId;
     loadSingleProduct(productId);
