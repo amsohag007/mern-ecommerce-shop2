@@ -1,5 +1,5 @@
 //add item to cart on local storage
-export const addItem = (item = [], count = 0, next = (f) => f) => {
+export const addItemToCart = (item = [], count = 0, next = (f) => f) => {
   let cart = [];
   if (typeof window !== "undefined") {
     if (localStorage.getItem("cart")) {
@@ -29,7 +29,7 @@ export const addItem = (item = [], count = 0, next = (f) => f) => {
 };
 
 //return the item number in cart
-export const itemTotal = () => {
+export const totalItemInCart = () => {
   if (typeof window !== "undefined") {
     if (localStorage.getItem("cart")) {
       return JSON.parse(localStorage.getItem("cart")).length;
@@ -38,7 +38,7 @@ export const itemTotal = () => {
   return 0;
 };
 
-export const getCart = () => {
+export const getCartItems = () => {
   if (typeof window !== "undefined") {
     if (localStorage.getItem("cart")) {
       return JSON.parse(localStorage.getItem("cart"));
@@ -47,7 +47,7 @@ export const getCart = () => {
   return [];
 };
 
-export const updateItem = (productId, count) => {
+export const updateCartItem = (productId, count) => {
   let cart = [];
   if (typeof window !== "undefined") {
     if (localStorage.getItem("cart")) {
@@ -64,7 +64,7 @@ export const updateItem = (productId, count) => {
   }
 };
 
-export const removeItem = (productId) => {
+export const removeCartItem = (productId) => {
   let cart = [];
   if (typeof window !== "undefined") {
     if (localStorage.getItem("cart")) {
