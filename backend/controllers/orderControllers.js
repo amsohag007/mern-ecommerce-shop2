@@ -34,18 +34,21 @@ const createOrder = (req, res) => {
     // order.address
     // order.products.length
     // order.amount
-    const emailData = {
-      to: "kaloraat@gmail.com",
-      from: "noreply@ecommerce.com",
-      subject: `A new order is received`,
-      html: `
-            <p>Customer name:</p>
-            <p>Total products: ${order.products.length}</p>
-            <p>Total cost: ${order.amount}</p>
-            <p>Login to dashboard to the order in detail.</p>
-        `,
-    };
-    sgMail.send(emailData);
+    /////////////////////////////
+    //email order info to client
+    // const emailData = {
+    //   to: "kaloraat@gmail.com",
+    //   from: "noreply@ecommerce.com",
+    //   subject: `A new order is received`,
+    //   html: `
+    //         <p>Customer name:</p>
+    //         <p>Total products: ${order.products.length}</p>
+    //         <p>Total cost: ${order.amount}</p>
+    //         <p>Login to dashboard to the order in detail.</p>
+    //     `,
+    // };
+    // sgMail.send(emailData);
+    //////////////////////////////
     res.json(data);
   });
 };
