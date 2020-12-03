@@ -77,6 +77,7 @@ export const productRelated = (productId) => {
     .catch((err) => console.log(err));
 };
 
+//get a token from payment using merchent private and public key
 export const getBraintreeClientToken = (userId, token) => {
   return fetch(`${API}/braintree/getToken/${userId}`, {
     method: "GET",

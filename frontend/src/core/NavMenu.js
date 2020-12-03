@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { signout, isAuthenticated } from "../api";
-import { itemTotal } from "./carthelpers.js";
+import { totalItemInCart } from "./cartHelpers";
 
 const isActive = (history, path) => {
   if (history.location.pathname === path) {
@@ -37,7 +37,7 @@ const NavMenu = ({ history }) => {
           >
             Cart{" "}
             <sup>
-              <small className="cart-badge">{itemTotal()}</small>
+              <small className="cart-badge">{totalItemInCart()}</small>
             </sup>
           </Link>
         </li>
