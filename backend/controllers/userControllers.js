@@ -1,4 +1,5 @@
 import User from "../models/userModel.js";
+import { Order } from "../models/orderModel.js";
 import errorHandler from "../errorHandler/dbErrorHandler.js";
 
 const userById = (req, res, next, id) => {
@@ -102,7 +103,7 @@ const purchaseHistory = (req, res) => {
     .exec((err, orders) => {
       if (err) {
         return res.status(400).json({
-          error: errorHandler(err),
+          error: "database error",
         });
       }
       res.json(orders);

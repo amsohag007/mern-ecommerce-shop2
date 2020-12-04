@@ -5,6 +5,7 @@ import {
   userById,
   readProfile,
   updateProfile,
+  purchaseHistory,
 } from "../controllers/userControllers.js";
 import {
   requireSignin,
@@ -20,6 +21,7 @@ router.get("/secret", isAuth, (req, res) => {
 
 router.get("/user/:userId", requireSignin, isAuth, readProfile);
 router.put("/user/update/:userId", requireSignin, isAuth, updateProfile);
+router.get("/orders/by/user/:userId", requireSignin, isAuth, purchaseHistory);
 
 router.param("userId", userById);
 
