@@ -18,9 +18,9 @@ router.get("/secret", isAuth, (req, res) => {
   });
 });
 
-router.get("/user/:userId", requireSignin, isAuth, isAdmin, readProfile);
+router.get("/user/:userId", requireSignin, isAuth, readProfile);
 router.put("/user/update/:userId", requireSignin, isAuth, updateProfile);
 
-router.param("/userId", userById);
+router.param("userId", userById);
 
 export default router;
