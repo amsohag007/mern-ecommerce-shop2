@@ -26,13 +26,13 @@ const AdminDashboard = () => {
             </Link>
           </li>
           <li className="list-group-item">
-            <Link className="nav-link" to={`/profile/${_id}`}>
-              Update Profile
+            <Link className="nav-link" to={`/admin/product`}>
+              Manage Product
             </Link>
           </li>
           <li className="list-group-item">
             <Link className="nav-link" to={`/admin/orders`}>
-              View Orders
+              Manage Orders
             </Link>
           </li>
         </ul>

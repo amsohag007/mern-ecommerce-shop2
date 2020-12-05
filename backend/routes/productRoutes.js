@@ -21,7 +21,7 @@ import {
 } from "../controllers/authControllers.js";
 import { userById } from "../controllers/userControllers.js";
 
-router.get("/productdetails/:productId", readProduct);
+router.get("/productdetails/:productId", readProduct); //read a single product details
 router.post(
   "/product/create/:userId",
   requireSignin,
@@ -30,14 +30,14 @@ router.post(
   createProduct
 );
 router.delete(
-  "/product/:productId/:userId",
+  "/product/delete/:productId/:userId",
   requireSignin,
   isAuth,
   isAdmin,
   deleteProduct
 );
 router.put(
-  "/product/:productId/:userId",
+  "/product/update/:productId/:userId",
   requireSignin,
   isAuth,
   isAdmin,
