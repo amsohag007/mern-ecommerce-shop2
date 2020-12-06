@@ -7,7 +7,7 @@ import NavMenu from "./core/NavMenu";
 import PrivateRoute from "./api/PrivateRoute";
 import UserDashboard from "./user/UserDashboard";
 import AdminRoute from "./api/AdminRoute";
-import AdminDashboard from "./user/AdminDashboard";
+import AdminDashboard from "./admin/AdminDashboard";
 import CreateCategory from "./admin/CreateCategory";
 import CreateProduct from "./admin/CreateProduct";
 import Shop from "./core/Shop";
@@ -17,6 +17,9 @@ import Orders from "./admin/Orders";
 import Profile from "./user/Profile";
 import ManageProducts from "./admin/ManageProducts";
 import UpdateProduct from "./admin/UpdateProduct";
+import VendorSignup from "./vendor/VendorSignup";
+import VendorSignin from "./vendor/VendorSignin";
+import VendorDashboard from "./vendor/VendorDashboard";
 
 const Routes = () => {
   return (
@@ -45,6 +48,14 @@ const Routes = () => {
           component={UpdateProduct}
         />
         <AdminRoute path="/admin/orders" exact component={Orders} />
+        {/* vendor routes */}
+        <Route path="/vendor/signup" exact component={VendorSignup} />
+        <Route path="/vendor/signin" exact component={VendorSignin} />
+        <PrivateRoute
+          path="/vendor/dashboard"
+          exact
+          component={VendorDashboard}
+        />
       </Switch>
     </BrowserRouter>
   );

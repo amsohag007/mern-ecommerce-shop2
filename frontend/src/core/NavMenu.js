@@ -89,6 +89,38 @@ const NavMenu = ({ history }) => {
             </Link>
           </li>
         )}
+        {/* vendor--------------------------------------- */}
+        <li className="nav-item">
+          <Link
+            className="nav-link"
+            style={isActive(history, "/vendor/signup")}
+            to="/vendor/signup"
+          >
+            Vendor SignUp
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link
+            className="nav-link"
+            style={isActive(history, "/vendor/signin")}
+            to="/vendor/signin"
+          >
+            Vendor Signin
+          </Link>
+        </li>
+
+        {isAuthenticated() && isAuthenticated().user.role === 1 && (
+          <li className="nav-item">
+            <Link
+              className="nav-link"
+              style={isActive(history, "/vendor/dashboard")}
+              to="/vendor/dashboard"
+            >
+              Dashboard
+            </Link>
+          </li>
+        )}
+        {/* --------------------------------------------- */}
 
         {isAuthenticated() && (
           <li className="nav-item">
