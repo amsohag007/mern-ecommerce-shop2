@@ -1,10 +1,12 @@
 import User from "../models/userModel.js";
+import Vendor from "../models/vendorModel.js";
 import jwt from "jsonwebtoken";
 import expressJwt from "express-jwt";
 import errorHandler from "../errorHandler/dbErrorHandler.js";
 import dotenv from "dotenv";
 dotenv.config();
 
+//user signUp
 const signup = async (req, res) => {
   try {
     const newUser = await new User(req.body);
@@ -24,7 +26,28 @@ const signup = async (req, res) => {
     console.error(err.message);
   }
 };
+//vendor signUp
+const vendorSignup = async (req, res) => {
+  try {
+    const newVendor = await new Vendor(req.body);
+    console.log("client send=>", req.body);
 
+    await newVendor.save((err, newVendor) => {
+      if (err) {
+        //return res.status(400).json({ err });
+        return res.status(400).json({
+          error: "Invalid form input",
+          // error: errorHandler(err),
+        });
+      }
+      res.status(200).json({ newVendor });
+    });
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
+//user signIn
 const signin = (req, res) => {
   const { email, password } = req.body;
   User.findOne({ email }, (err, user) => {
@@ -49,6 +72,32 @@ const signin = (req, res) => {
   });
 };
 
+//vendor signIN
+const vendorSignin = (req, res) => {
+  const { email, password } = req.body;
+  Vendor.findOne({ email }, (err, user) => {
+    if (err || !user) {
+      return res.status(400).json({
+        error: "User with that email does not exist. Please signup.",
+      });
+    }
+
+    if (!user.authenticate(password)) {
+      return res.status(401).json({
+        error: "email and password dont match",
+      });
+    }
+
+    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
+
+    res.cookie("t", token, { expire: new Date() + 9999 });
+
+    const { _id, name, email, role } = user;
+    return res.json({ token, user: { _id, email, name, role } });
+  });
+};
+
+//signout
 const signout = (req, res) => {
   res.clearCookie("t");
   res.json({ message: "Signout success" });
@@ -80,4 +129,13 @@ const isAdmin = (req, res, next) => {
   next();
 };
 
-export { signup, signin, signout, requireSignin, isAuth, isAdmin };
+export {
+  signup,
+  signin,
+  vendorSignup,
+  vendorSignin,
+  signout,
+  requireSignin,
+  isAuth,
+  isAdmin,
+};
