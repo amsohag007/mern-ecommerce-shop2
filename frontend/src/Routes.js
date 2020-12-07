@@ -40,7 +40,7 @@ const Routes = () => {
         <PrivateRoute path="/userprofile/:userId" exact component={Profile} />
         <AdminRoute path="/admin/dashboard" exact component={AdminDashboard} />
         <AdminRoute path="/category/create" exact component={CreateCategory} />
-        <AdminRoute path="/product/create" exact component={CreateProduct} />
+        <PrivateRoute path="/product/create" exact component={CreateProduct} />
         <AdminRoute path="/admin/product" exact component={ManageProducts} />
         <AdminRoute
           path="/admin/product/update/:productId"

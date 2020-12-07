@@ -22,13 +22,7 @@ import {
 import { userById } from "../controllers/userControllers.js";
 
 router.get("/productdetails/:productId", readProduct); //read a single product details
-router.post(
-  "/product/create/:userId",
-  requireSignin,
-  isAuth,
-  isAdmin,
-  createProduct
-);
+router.post("/product/create/:userId", requireSignin, createProduct);
 router.delete(
   "/product/delete/:productId/:userId",
   requireSignin,

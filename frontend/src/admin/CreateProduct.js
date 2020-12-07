@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../api/index.js";
-import { Link } from "react-router-dom";
 import { createProduct, getCategories } from "./apiAdmin";
 
 const CreateProduct = () => {
@@ -9,6 +8,7 @@ const CreateProduct = () => {
     name: "",
     description: "",
     price: "",
+    vendor: "",
     categories: [],
     category: "",
     shipping: "",
@@ -26,6 +26,7 @@ const CreateProduct = () => {
     name,
     description,
     price,
+    vendor,
     categories,
     category,
     shipping,
@@ -64,6 +65,7 @@ const CreateProduct = () => {
 
   const clickSubmit = (event) => {
     event.preventDefault();
+    console.log(values);
     setValues({ ...values, error: "", loading: true });
 
     createProduct(user._id, token, formData).then((data) => {
@@ -75,6 +77,7 @@ const CreateProduct = () => {
           name: "",
           description: "",
           photo: "",
+          vendor: "",
           price: "",
           quantity: "",
           loading: false,
@@ -127,6 +130,13 @@ const CreateProduct = () => {
         />
       </div>
 
+      <div className="form-group">
+        <label className="text-muted">VendorId</label>
+        <select onChange={handleChange("vendor")} className="form-control">
+          <option>Please select</option>
+          {user._id && <option>{user._id}</option>}
+        </select>
+      </div>
       <div className="form-group">
         <label className="text-muted">Category</label>
         <select onChange={handleChange("category")} className="form-control">
