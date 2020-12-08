@@ -1,9 +1,10 @@
 import User from "../models/userModel.js";
 import { Order } from "../models/orderModel.js";
 import errorHandler from "../errorHandler/dbErrorHandler.js";
+import Vendor from "../models/vendorModel.js";
 
 const userById = (req, res, next, id) => {
-  User.findById(id).exec((err, user) => {
+  Vendor.findById(id).exec((err, user) => {
     if (err || !user) {
       return res.status(400).json({
         error: "User not found",

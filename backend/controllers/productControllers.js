@@ -84,6 +84,7 @@ const deleteProduct = (req, res) => {
   let product = req.product;
   product.remove((err, deletedProduct) => {
     if (err) {
+      console.log("PRODUCT CREATE ERROR ", err);
       return res.status(400).json({
         error: errorHandler(err),
       });
@@ -95,6 +96,7 @@ const deleteProduct = (req, res) => {
 };
 
 const updateProduct = (req, res) => {
+  console.log(req.body);
   let form = new formidable.IncomingForm();
   form.keepExtensions = true;
   form.parse(req, (err, fields, files) => {

@@ -63,6 +63,25 @@ const NavMenu = ({ history }) => {
                 Signup
               </Link>
             </li>
+            {/* vendor--------------------------------------- */}
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                style={isActive(history, "/vendor/signup")}
+                to="/vendor/signup"
+              >
+                Vendor SignUp
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                style={isActive(history, "/vendor/signin")}
+                to="/vendor/signin"
+              >
+                Vendor Signin
+              </Link>
+            </li>
           </>
         )}
 
@@ -73,7 +92,7 @@ const NavMenu = ({ history }) => {
               style={isActive(history, "/user/dashboard")}
               to="/user/dashboard"
             >
-              Dashboard
+              User's Dashboard
             </Link>
           </li>
         )}
@@ -85,42 +104,22 @@ const NavMenu = ({ history }) => {
               style={isActive(history, "/admin/dashboard")}
               to="/admin/dashboard"
             >
-              Dashboard
+              Admin Dashboard
             </Link>
           </li>
         )}
-        {/* vendor--------------------------------------- */}
-        <li className="nav-item">
-          <Link
-            className="nav-link"
-            style={isActive(history, "/vendor/signup")}
-            to="/vendor/signup"
-          >
-            Vendor SignUp
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link
-            className="nav-link"
-            style={isActive(history, "/vendor/signin")}
-            to="/vendor/signin"
-          >
-            Vendor Signin
-          </Link>
-        </li>
 
-        {isAuthenticated() && isAuthenticated().user.role === 1 && (
+        {isAuthenticated() && isAuthenticated().user.role === 2 && (
           <li className="nav-item">
             <Link
               className="nav-link"
               style={isActive(history, "/vendor/dashboard")}
               to="/vendor/dashboard"
             >
-              Dashboard
+              Vendor Dashboard
             </Link>
           </li>
         )}
-        {/* --------------------------------------------- */}
 
         {isAuthenticated() && (
           <li className="nav-item">

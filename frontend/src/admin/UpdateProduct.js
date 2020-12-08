@@ -79,6 +79,7 @@ const UpdateProduct = ({ match }) => {
   };
 
   const clickSubmit = (event) => {
+    console.log(values);
     event.preventDefault();
     setValues({ ...values, error: "", loading: true });
 

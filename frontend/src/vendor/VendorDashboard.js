@@ -16,22 +16,17 @@ const VendorDashboard = () => {
         <h4 className="card-header">Vendor Links</h4>
         <ul className="list-group">
           <li className="list-group-item">
-            <Link className="nav-link" to="/category/create">
-              Create New Category
-            </Link>
-          </li>
-          <li className="list-group-item">
-            <Link className="nav-link" to="/product/create">
+            <Link className="nav-link" to="/vendor/product/create">
               Create New Product
             </Link>
           </li>
           <li className="list-group-item">
-            <Link className="nav-link" to={`/admin/product`}>
+            <Link className="nav-link" to={`/vendor/products`}>
               Manage Product
             </Link>
           </li>
           <li className="list-group-item">
-            <Link className="nav-link" to={`/admin/orders`}>
+            <Link className="nav-link" to={`/vendor/orders`}>
               Manage Orders
             </Link>
           </li>
@@ -48,7 +43,7 @@ const VendorDashboard = () => {
           <li className="list-group-item">{name}</li>
           <li className="list-group-item">{email}</li>
           <li className="list-group-item">
-            {role === 2 ? "Vendor" : "Registered User"}
+            {role === 2 ? "Welcome Vendor" : "Registered User"}
           </li>
         </ul>
       </div>

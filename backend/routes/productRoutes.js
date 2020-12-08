@@ -26,17 +26,9 @@ router.post("/product/create/:userId", requireSignin, createProduct);
 router.delete(
   "/product/delete/:productId/:userId",
   requireSignin,
-  isAuth,
-  isAdmin,
   deleteProduct
 );
-router.put(
-  "/product/update/:productId/:userId",
-  requireSignin,
-  isAuth,
-  isAdmin,
-  updateProduct
-);
+router.put("/product/update/:productId/:userId", requireSignin, updateProduct);
 
 router.get("/products", productList);
 router.get("/products/related/:productId", productRelatedlist);
