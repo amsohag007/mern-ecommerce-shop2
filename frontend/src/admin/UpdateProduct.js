@@ -212,7 +212,11 @@ const UpdateProduct = ({ match }) => {
   const redirectUser = () => {
     if (redirectToProfile) {
       if (!error) {
-        return <Redirect to="/admin/product" />;
+        if (user.role === 0) {
+          return <Redirect to="/admin/product" />;
+        } else {
+          return <Redirect to="/vendor/products" />;
+        }
       }
     }
   };
