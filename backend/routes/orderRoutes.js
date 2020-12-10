@@ -28,19 +28,17 @@ router.post(
   createOrder
 );
 
-router.get("/order/list/:userId", requireSignin, isAuth, isAdmin, listOfOrders);
+router.get("/order/list/:userId", requireSignin, listOfOrders);
 router.get(
   "/order/status-values/:userId",
   requireSignin,
-  isAuth,
-  isAdmin,
+
   getStatusValues
 );
 router.put(
   "/order/:orderId/status/:userId",
   requireSignin,
-  isAuth,
-  isAdmin,
+
   updateOrderStatus
 );
 

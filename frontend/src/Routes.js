@@ -74,6 +74,7 @@ const Routes = () => {
           exact
           component={UpdateProduct}
         />
+        <VendorRoute path="/vendor/orders" exact component={Orders} />
       </Switch>
     </BrowserRouter>
   );
